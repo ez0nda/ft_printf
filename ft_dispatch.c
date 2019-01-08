@@ -6,7 +6,7 @@
 /*   By: ezonda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 13:36:39 by ezonda            #+#    #+#             */
-/*   Updated: 2019/01/06 14:58:43 by ezonda           ###   ########.fr       */
+/*   Updated: 2019/01/08 12:07:00 by ezonda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_dispatch(t_struct *stru)
 	if (stru->indic == 'p')
 		;
 	if (stru->indic == 'd' || stru->indic == 'i')
-		;
+		ft_indic_di(stru);
 	if (stru->indic == 'o')
 		;
 	if (stru->indic == 'u')

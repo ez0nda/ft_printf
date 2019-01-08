@@ -6,7 +6,7 @@
 /*   By: ezonda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 10:57:48 by ezonda            #+#    #+#             */
-/*   Updated: 2019/01/07 14:40:57 by ezonda           ###   ########.fr       */
+/*   Updated: 2019/01/08 16:55:37 by ezonda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,9 @@ void	ft_check_width(const char *format, t_struct *stru);
 void	ft_check_precision(const char *format, t_struct *stru);
 void	ft_dispatch(t_struct *stru);
 void	ft_indic_c(t_struct *stru);
+void	ft_indic_di(t_struct *stru);
 void	ft_initialize_flags(t_struct *stru);
+int		ft_nbrsize(int nb);
 
 #endif
 

@@ -6,7 +6,7 @@
 /*   By: ezonda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 09:59:40 by ezonda            #+#    #+#             */
-/*   Updated: 2019/01/07 15:18:22 by ezonda           ###   ########.fr       */
+/*   Updated: 2019/01/08 16:55:50 by ezonda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	ft_check_width(const char *format, t_struct *stru)
 	stru->min_field = ft_atoi(width);
 	free(width);
 //	printf("width = %s\n", width);
-//	printf("atoi = %d\n", ft_atoi(stru->width));
+//	printf("atoi_width = %d\n", stru->min_field);
 }
 
 void	ft_check_precision(const char *format, t_struct *stru)

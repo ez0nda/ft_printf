@@ -6,7 +6,7 @@
 /*   By: ezonda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 09:05:54 by ezonda            #+#    #+#             */
-/*   Updated: 2019/01/07 15:28:03 by ezonda           ###   ########.fr       */
+/*   Updated: 2019/01/08 16:55:58 by ezonda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ int		ft_printf(const char *format, ...)
 			ft_find_indicator(&format[i], &stru);
 			ft_check_width(&format[i], &stru);
 			ft_check_precision(&format[i], &stru);
-			// ft_flag_error (in dispatch.c) ?
+			// ft_flag_error (in dispatch.c / find_indicator) ?
 			ft_check_flags(&format[i], &stru);
 			while (format[i] != stru.indic)
 				i++;
 		}
-		else if (format[i] != '%' && stru.mod != 1)
+		else if (format[i] != '%' && stru.mod != 1) // if format valid
 			write(1, &format[i], 1);
 		i++;
 	}
@@ -42,9 +42,13 @@ int		ft_printf(const char *format, ...)
 
 int		main(void)
 {
-//	ft_printf("%12c %4c %6c %1c", 'Z', 'A', 48, 49);
-//	printf("%12c %4c %6c %1c", 'Z', 'A', 48, 49);
-	ft_printf("%14c", 55);
-//	printf("%12c", 55);
+//	ft_printf("hello %12 c %4c world %6c %1c test", 'Z', 'A', 48, 49);
+//	printf("\nprintf\nhello %12 c %4c world %6c %1c test", 'Z', 'A', 48, 49);
+	ft_printf("%-14c", 55);
+	printf("\nprintf\n%-14c", 55);
+//	ft_printf("%10.9d %5d %.3d %d", 1, 2, 3, 4);
+//	printf("\nprintf\n%10.9d %5d %.3d %d", 1, 2, 3, 4);
+//	ft_printf("%05d", 12);
+//	printf("\npf\n%05d", 12);
 	return (0);
 }
