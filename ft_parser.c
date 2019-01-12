@@ -6,13 +6,13 @@
 /*   By: ezonda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 09:59:40 by ezonda            #+#    #+#             */
-/*   Updated: 2019/01/08 16:55:50 by ezonda           ###   ########.fr       */
+/*   Updated: 2019/01/12 10:46:39 by ezonda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_find_indicator(const char *format, t_struct *stru)
+void	ft_find_indicator(const char *format, t_struct *stru, t_stock *stock)
 {
 	int		i;
 
@@ -23,10 +23,10 @@ void	ft_find_indicator(const char *format, t_struct *stru)
 			format[i] != 'f')
 		i++;
 	stru->indic = format[i];
-	stru->mod = 0;
+	ft_stock(stock, stru);
 }
 
-void	ft_check_flags(const char *format, t_struct *stru)
+void	ft_check_flags(const char *format, t_struct *stru, t_stock *stock)
 {
 	int i;
 
@@ -37,7 +37,7 @@ void	ft_check_flags(const char *format, t_struct *stru)
 			format[i] != 'c' && format[i] != 's' && format[i] != 'p' &&
 			format[i] != 'f')
 	{
-		if (format[i] == '0')
+		if (format[i] == '0' && (format[i - 1] < '0' || format[i - 1] > '9'))
 			stru->flag[0] = 1;
 		if (format[i] == '#')
 			stru->flag[1] = 1;
@@ -50,8 +50,8 @@ void	ft_check_flags(const char *format, t_struct *stru)
 		ft_check_flags_p2(format, stru, i);
 		i++;
 	}
-	ft_dispatch(stru);
-//	printf("flag = %d\n", stru->flag[0]);
+//	ft_check_format(format, stru);
+	ft_dispatch(stru, stock);
 }
 
 void	ft_check_flags_p2(const char *format, t_struct *stru, int i)
@@ -89,8 +89,6 @@ void	ft_check_width(const char *format, t_struct *stru)
 	}
 	stru->min_field = ft_atoi(width);
 	free(width);
-//	printf("width = %s\n", width);
-//	printf("atoi_width = %d\n", stru->min_field);
 }
 
 void	ft_check_precision(const char *format, t_struct *stru)
@@ -103,19 +101,21 @@ void	ft_check_precision(const char *format, t_struct *stru)
 	j = 0;
 	pre = ft_strnew(0);
 	stru->prec = 0;
-	while (format[i] != stru->indic)
+	while (format[i] != '\0'  && format[i] != stru->indic)
 	{
 		if (format[i] == '.' && ft_isdigit(format[i + 1]))
 		{
 			while (ft_isdigit(format[++i]))
+			{
 				pre[j++] = format[i];
+			//	++i;
+			}
 		}
 		i++;
 		pre[j] = '\0';
 	}
 	stru->prec = ft_atoi(pre);
 	free(pre);
-//	printf("atoi_precision = %d\n", stru->prec);
 }
 
 void	ft_initialize_flags(t_struct *stru) // a mettre ds un autre fichier
