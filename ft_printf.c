@@ -6,7 +6,7 @@
 /*   By: ezonda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 09:05:54 by ezonda            #+#    #+#             */
-/*   Updated: 2019/01/12 16:39:49 by ezonda           ###   ########.fr       */
+/*   Updated: 2019/01/14 15:51:52 by ezonda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ int		main(void)
 //	printf("\nprintf\n %15c %c %c %c", 48, 55, 56, 57);
 //	ft_printf("%10.9d %5d %.3d %d", 1, 2, 3, 4);
 //	printf("\nprintf\n%10.9d %5d %.3d %d", 1, 2, 3, 4);
-	ft_printf("%+-21.15i", -42);
-	printf("\nprintf \n%+-21.15i", -42);
+	ft_printf("%+-15.20i", -42);
+	printf("\nprintf \n%+-15.20i", -42);
 //	ft_printf(" %010s %s", "hello", "world");
 //	printf("\npf\n %010s %s", "hello", "world");
 	return (0);
