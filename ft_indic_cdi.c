@@ -44,16 +44,18 @@ void	ft_indic_di(t_struct *stru, t_stock *stock)
 	{
 		if (stru->flag[3] == 1 && (stru->prec != 0 || stru->flag[0] == 1))
 			stru->stock_pad--;
-		while (stru->stock_pad > stru->stock_pre++)
-			ft_putchar(stru->prec != 0 ? '1' : ' ');
+		while (stru->stock_pad > stru->stock_pre++ && stock->stock_i >= 0)
+			ft_putchar(' ');//ft_putchar(stru->prec != 0 ? '1' : ' ');
 	}
 	if (stru->flag[3] == 1 && stru->flag[0] == 0 && stru->prec == 0)
 		stru->min_field--;
+	if (stock->stock_i < 0 && stru->stock_pad > stru->stock_pre && stru->prec > 0) // new // flagg 3 == 1
+		stru->prec++;
 	while (i < stru->min_field || i < stru->prec)
 	{
 		while (stru->prec > i && stru->flag[0] == 0)
 		{
-			ft_putchar('2');
+			ft_putchar('0');
 			stru->prec--;
 		}
 		while (stru->min_field > i && stru->stock_pad > stru->stock_pre && stru->flag[0] == 0)
@@ -69,10 +71,10 @@ void	ft_indic_di(t_struct *stru, t_stock *stock)
 		i++;;
 	}
 	if (stru->flag[3] == 1 && stru->prec > stru->min_field && stru->prec != 0 && stru->min_field != 0)
-		ft_putchar('3');
+		ft_putchar('0');
 
 	if (stock->stock_i < 0 && stru->flag[3] == 1 && stru->prec == 0 && stru->flag[0] == 1)
-		ft_putchar('4');
+		ft_putchar('0');
 	if (stru->flag[2] == 1 && stru->prec != 0)
 		ft_putnbr(stock->stock_i >= 0 ? stock->stock_i : stock->stock_i * -1);
 	if (stru->flag[2] == 0)
@@ -104,7 +106,10 @@ void	ft_apply_flags(t_struct *stru, t_stock *stock)
 		stru->flag[0] = 0;
 	while (stru->flag[3] == 1 && ++nik < stru->min_field - stru->prec && stru->prec != 0 && stru->flag[2] == 0)
 		ft_putchar(' ');
-	if (stock->stock_i < 0 && (stru->flag[0] == 1 || stru->prec != 0 || stru->flag[2] == 1))
+	while (++nik < stru->min_field - stru->prec && stru->prec != 0 && stru->flag[2] == 0)
+		ft_putchar(' ');
+
+	if (stock->stock_i < 0 && (stru->flag[0] == 1 || stru->prec > 0/*stru->min_field*/ || stru->flag[2] == 1))
 		ft_putchar('-');
 
 	if (stru->flag[3] == 1 && (stru->prec != 0 || stru->flag[0] == 1 || stru->flag[2] == 1))
@@ -125,10 +130,10 @@ void	ft_apply_flags(t_struct *stru, t_stock *stock)
 		i--;
 	}
 	if (stock->stock_i < 0 &&  stru->prec != 0 && stru->prec > stru->min_field)
-			ft_putchar('5'); // decalage si pre || flag 0
+			ft_putchar('0'); // decalage si pre || flag 0
 	while (stru->flag[0] == 1 && i > 0)
 	{
-		ft_putchar('6');
+		ft_putchar('0');
 		i--;
 	}
 }

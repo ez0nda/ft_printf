@@ -45,8 +45,8 @@ int		main(void)
 //	printf("\nprintf\n %15c %c %c %c", 48, 55, 56, 57);
 //	ft_printf("%10.9d %5d %.3d %d", 1, 2, 3, 4);
 //	printf("\nprintf\n%10.9d %5d %.3d %d", 1, 2, 3, 4);
-	ft_printf("%+-15.20i", -42);
-	printf("\nprintf \n%+-15.20i", -42);
+	ft_printf("%+-42.23i", -42);
+	printf("\nprintf \n%+-42.23i\n", -42);
 //	ft_printf(" %010s %s", "hello", "world");
 //	printf("\npf\n %010s %s", "hello", "world");
 	return (0);
