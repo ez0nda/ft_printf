@@ -6,7 +6,7 @@
 /*   By: ezonda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 13:18:21 by ezonda            #+#    #+#             */
-/*   Updated: 2018/11/17 21:28:59 by ezonda           ###   ########.fr       */
+/*   Updated: 2019/01/15 18:26:16 by ezonda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char			*ft_strcpy(char *dest, const char *src);
 char			*ft_strncpy(char *dest, const char *src, size_t n);
 char			*ft_strcat(char *s1, const char *s2);
 char			*ft_strncat(char *s1, const char *s2, size_t n);
-int				ft_atoi(const char *str);
+long			ft_atoi(const char *str);
 int				ft_strcmp(const char *s1, const char *s2);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 char			*ft_strstr(const char *str, const char *to_find);
@@ -58,7 +58,7 @@ int				ft_toupper(int c);
 int				ft_tolower(int c);
 void			ft_strclr(char *s);
 char			*ft_strnew(size_t size);
-char			*ft_itoa(int n);
+char			*ft_itoa(long n);
 char			*ft_strrev(char *s);
 void			ft_striter(char *s, void (*f)(char *));
 void			ft_striteri(char *s, void (*f)(unsigned int, char *));
@@ -84,7 +84,7 @@ void			ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list			*ft_lstnew(void const *content, size_t content_size);
 t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 int				ft_is_prime(int nb);
-int				ft_recursive_power(int nb, int pow);
+long			ft_recursive_power(long nb, long pow);
 int				ft_sqrt(int nb);
 void			ft_print_words_tables(char **tab);
 

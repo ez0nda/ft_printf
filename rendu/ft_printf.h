@@ -6,7 +6,7 @@
 /*   By: ezonda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 10:57:48 by ezonda            #+#    #+#             */
-/*   Updated: 2019/01/14 16:06:35 by jebrocho         ###   ########.fr       */
+/*   Updated: 2019/01/15 16:26:24 by ezonda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,9 @@ void	ft_initialize_flags(t_struct *stru);
 int		ft_nbrsize(int nb);
 void	ft_stock(t_stock *stock, t_struct *stru);
 void	ft_apply_flags(t_struct *stru, t_stock *stock);
+void	ft_apply_flags2(t_struct *stru, t_stock *stock, int i);
+void	ft_apply_flags3(t_struct *stru, t_stock *stock, int i);
+void	ft_apply_flags4(t_struct *stru, t_stock *stock);
 char	*ft_convert_o(long long octal_int);
 void	ft_indic_o(t_struct *stru, t_stock *stock);
 void	ft_indic_h(t_struct *stru, t_stock *stock);

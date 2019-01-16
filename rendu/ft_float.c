@@ -6,11 +6,11 @@
 /*   By: jebrocho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 13:29:10 by jebrocho          #+#    #+#             */
-/*   Updated: 2019/01/14 15:59:32 by jebrocho         ###   ########.fr       */
+/*   Updated: 2019/01/16 12:46:37 by ezonda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "includes/ft_printf.h"
 
 void	ft_prec(t_struct * stru, long double f)
 {

@@ -6,11 +6,11 @@
 /*   By: ezonda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 09:05:54 by ezonda            #+#    #+#             */
-/*   Updated: 2019/01/14 16:10:22 by jebrocho         ###   ########.fr       */
+/*   Updated: 2019/01/16 13:34:58 by ezonda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "includes/ft_printf.h"
 
 int		ft_printf(const char *format, ...)
 {
@@ -41,6 +41,7 @@ int		ft_printf(const char *format, ...)
 
 int		main(void)
 {
+//	char	*ptr;
 //	ft_printf(" %15c %c %c %c", 48, 55, 56, 57);
 //	printf("\nprintf\n %15c %c %c %c", 48, 55, 56, 57);
 //	ft_printf("%10.9d %5d %.3d %d", 1, 2, 3, 4);
@@ -49,7 +50,9 @@ int		main(void)
 //	printf("\nprintf \n%+-15.20i", -42);
 //	ft_printf(" %010s %s", "hello", "world");
 //	printf("\npf\n %010s %s", "hello", "world");
-	ft_printf("test f : %o\n", 1500);
-	printf("printf : %o\n", 1500);
+//	ft_printf("%-+35.20d", 42);
+//	printf("\nprintf \n%-+35.20d", 42);
+	ft_printf("%+18.8d", 18);
+	printf("\nprintf \n%+18.8d", 18);
 	return (0);
 }

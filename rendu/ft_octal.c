@@ -6,11 +6,11 @@
 /*   By: jebrocho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 14:33:05 by jebrocho          #+#    #+#             */
-/*   Updated: 2019/01/11 14:58:39 by jebrocho         ###   ########.fr       */
+/*   Updated: 2019/01/16 12:47:30 by ezonda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "includes/ft_printf.h"
 
 char		*ft_form_o(long long oct, long long count, char *str)
 {
@@ -20,13 +20,18 @@ char		*ft_form_o(long long oct, long long count, char *str)
 		str = ft_itoa(oct);
 		return (str);
 	}
-	if (ft_nbrsize(count) > ft_nbrsize(oct))
+	if (ft_nbrsize(count) - 1 > ft_nbrsize(oct))
 	{
+		printf("%lld\n", oct);
 		str = ft_itoa(oct);
+		printf("%s\n", str);
 		str = ft_strrev(str);
 		oct = ft_atoi(str);
+		printf("%lld\n", oct);
 		oct = oct * ft_recursive_power(10, ft_nbrsize(count) - ft_nbrsize(oct));
+		printf("%lld\n", oct);
 		str = ft_itoa(oct);
+		printf("%s\n", str);
 		return (str);
 	}
 	return (NULL);
@@ -62,13 +67,19 @@ void		ft_indic_o(t_struct *stru, t_stock *stock)
 {
 	if (stru->flag[7] == 1)
 	{
-		ft_putstr(ft_convert_o(stock->stock_ill));
+//		ft_putstr(ft_convert_o(stock->stock_ill));
+		stock->stock_il = ft_atoi(ft_convert_o(stock->stock_ill));
+		ft_indic_di(stru, stock);
 		return ;
 	}
 	if (stru->flag[8] == 1)
 	{
-		ft_putstr(ft_convert_o(stock->stock_il));
+//		ft_putstr(ft_convert_o(stock->stock_il));
+		stock->stock_il = ft_atoi(ft_convert_o(stock->stock_il));
+		ft_indic_di(stru, stock);
 		return ;
 	}
-	ft_putstr(ft_convert_o(stock->stock_i));
+//	ft_putstr(ft_convert_o(stock->stock_i));
+	stock->stock_il = ft_atoi(ft_convert_o(stock->stock_i));
+	ft_indic_di(stru, stock);
 }

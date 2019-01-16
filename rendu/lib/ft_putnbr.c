@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_indic_s.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ezonda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/11 11:10:01 by ezonda            #+#    #+#             */
-/*   Updated: 2019/01/11 11:24:37 by ezonda           ###   ########.fr       */
+/*   Created: 2018/11/09 10:25:08 by ezonda            #+#    #+#             */
+/*   Updated: 2019/01/16 12:58:20 by ezonda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "includes/libftprintf.h"
 
-void	ft_indic_s(t_struct *stru, t_stock *stock)
+void	ft_putnbr(int n)
 {
-	if (stru->flag[2] == 1)
-		ft_putstr(stock->stock_s);
-	if (stru->flag[0] == 1 && stru->flag[2] == 0)
+	long nb;
+
+	nb = n;
+	if (nb < 0)
 	{
-		while (stru->min_field > ft_strlen(stock->stock_s))
-		{
-			ft_putchar('0');
-			stru->min_field--;
-		}
+		ft_putchar('-');
+		nb = -nb;
 	}
-	while (stru->min_field > ft_strlen(stock->stock_s))
+	if (nb > 9)
 	{
-		ft_putchar(' ');
-		stru->min_field--;
+		ft_putnbr(nb / 10);
+		ft_putnbr(nb % 10);
 	}
-	if (stru->flag[2] == 0)
-		ft_putstr(stock->stock_s);
+	else
+	{
+		nb = nb + '0';
+		ft_putchar(nb);
+	}
 }

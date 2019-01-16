@@ -6,11 +6,11 @@
 /*   By: ezonda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 09:59:40 by ezonda            #+#    #+#             */
-/*   Updated: 2019/01/12 10:46:39 by ezonda           ###   ########.fr       */
+/*   Updated: 2019/01/16 12:47:41 by ezonda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "includes/ft_printf.h"
 
 void	ft_find_indicator(const char *format, t_struct *stru, t_stock *stock)
 {

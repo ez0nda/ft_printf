@@ -6,7 +6,7 @@
 /*   By: ezonda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 10:57:48 by ezonda            #+#    #+#             */
-/*   Updated: 2019/01/12 10:29:57 by ezonda           ###   ########.fr       */
+/*   Updated: 2019/01/15 16:26:24 by ezonda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct s_struct
 	int			mod;
 	int			min_field;
 	int			prec;
+	long		float_dec;
 	int			count_char;
 	int			valid;
 	int			stock_pre;
@@ -34,10 +35,13 @@ typedef struct s_struct
 
 typedef struct s_stock
 {
-	int		stock_i;
-	float	stock_f;
-	char	stock_c;
-	char	*stock_s;
+	int			stock_i;
+	long		stock_il;
+	long long	stock_ill;
+	double		stock_f;
+	long double	stock_lf;
+	char		stock_c;
+	char		*stock_s;
 }	t_stock;
 
 void	ft_find_indicator(const char *format, t_struct *stru, t_stock *stock);
@@ -55,8 +59,14 @@ void	ft_indic_s(t_struct *stru, t_stock *stock);
 void	ft_initialize_flags(t_struct *stru);
 int		ft_nbrsize(int nb);
 void	ft_stock(t_stock *stock, t_struct *stru);
-char	*ft_indic_o(int octal_int);
 void	ft_apply_flags(t_struct *stru, t_stock *stock);
+void	ft_apply_flags2(t_struct *stru, t_stock *stock, int i);
+void	ft_apply_flags3(t_struct *stru, t_stock *stock, int i);
+void	ft_apply_flags4(t_struct *stru, t_stock *stock);
+char	*ft_convert_o(long long octal_int);
+void	ft_indic_o(t_struct *stru, t_stock *stock);
+void	ft_indic_h(t_struct *stru, t_stock *stock);
+void	ft_indic_f(t_struct *stru, t_stock *stock);
 
 #endif
 
