@@ -6,7 +6,7 @@
 /*   By: ezonda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 10:57:48 by ezonda            #+#    #+#             */
-/*   Updated: 2019/01/16 12:48:51 by ezonda           ###   ########.fr       */
+/*   Updated: 2019/01/16 15:12:17 by ezonda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ typedef struct s_struct
 {
 	va_list		ap;
 	char		indic;
-	int			mod;
 	int			min_field;
 	int			prec;
 	long		float_dec;
@@ -42,6 +41,7 @@ typedef struct s_stock
 	long double	stock_lf;
 	char		stock_c;
 	char		*stock_s;
+	void		*stock_p;
 }	t_stock;
 
 void	ft_find_indicator(const char *format, t_struct *stru, t_stock *stock);
@@ -56,6 +56,7 @@ void	ft_dispatch(t_struct *stru, t_stock *stock);
 void	ft_indic_c(t_struct *stru, t_stock *stock);
 void	ft_indic_di(t_struct *stru, t_stock *stock);
 void	ft_indic_s(t_struct *stru, t_stock *stock);
+void	ft_indic_p(t_struct *stru, t_stock *stock);
 void	ft_initialize_flags(t_struct *stru);
 int		ft_nbrsize(int nb);
 void	ft_stock(t_stock *stock, t_struct *stru);
@@ -64,9 +65,11 @@ void	ft_apply_flags2(t_struct *stru, t_stock *stock, int i);
 void	ft_apply_flags3(t_struct *stru, t_stock *stock, int i);
 void	ft_apply_flags4(t_struct *stru, t_stock *stock);
 char	*ft_convert_o(long long octal_int);
+char	*ft_convert_hexa(long long hexa);
 void	ft_indic_o(t_struct *stru, t_stock *stock);
 void	ft_indic_h(t_struct *stru, t_stock *stock);
 void	ft_indic_f(t_struct *stru, t_stock *stock);
+void	ft_putstr_free(char *s);
 
 #endif
 

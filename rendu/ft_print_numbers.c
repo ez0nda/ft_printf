@@ -6,7 +6,7 @@
 /*   By: ezonda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 13:39:35 by ezonda            #+#    #+#             */
-/*   Updated: 2019/01/16 13:36:55 by ezonda           ###   ########.fr       */
+/*   Updated: 2019/01/16 13:47:59 by ezonda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_indic_di(t_struct *stru, t_stock *stock)
 		if (stru->flag[3] == 1 && (stru->prec != 0 || stru->flag[0] == 1))
 			stru->stock_pad--;
 		while (stru->stock_pad > stru->stock_pre++ && stock->stock_i >= 0
-				&&stru->flag[3] == 0)
+				&& stru->flag[3] == 0)
 			ft_putchar(' ');
 	}
 	if (stru->flag[3] == 1 && stru->flag[0] == 0 && stru->prec == 0)

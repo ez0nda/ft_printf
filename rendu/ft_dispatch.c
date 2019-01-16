@@ -6,7 +6,7 @@
 /*   By: ezonda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 13:36:39 by ezonda            #+#    #+#             */
-/*   Updated: 2019/01/16 13:22:59 by ezonda           ###   ########.fr       */
+/*   Updated: 2019/01/16 15:12:18 by ezonda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_dispatch(t_struct *stru, t_stock *stock)
 	if (stru->indic == 's')
 		ft_indic_s(stru, stock);
 	if (stru->indic == 'p')
-		;
+		ft_indic_p(stru, stock);
 	if (stru->indic == 'd' || stru->indic == 'i')
 		ft_indic_di(stru, stock);
 	if (stru->indic == 'o')
@@ -53,4 +53,6 @@ void	ft_stock(t_stock *stock, t_struct *stru)
 		stock->stock_s = va_arg(stru->ap, char*);
 	if (stru->indic == 'f')
 		stock->stock_f = va_arg(stru->ap, double);
+	if (stru->indic == 'p')
+		stock->stock_p = va_arg(stru->ap, void*);
 }

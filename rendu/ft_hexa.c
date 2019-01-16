@@ -6,15 +6,15 @@
 /*   By: jebrocho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 14:58:50 by jebrocho          #+#    #+#             */
-/*   Updated: 2019/01/16 12:46:49 by ezonda           ###   ########.fr       */
+/*   Updated: 2019/01/16 15:08:21 by ezonda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_printf.h"
 
-static void		ft_putstr_free(char *s)
+/*static*/ void		ft_putstr_free(char *s)
 {
-	int i;
+	long i;
 
 	i = 0;
 	while (s[i])
