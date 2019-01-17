@@ -6,7 +6,7 @@
 /*   By: jebrocho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 14:33:05 by jebrocho          #+#    #+#             */
-/*   Updated: 2019/01/16 12:47:30 by ezonda           ###   ########.fr       */
+/*   Updated: 2019/01/17 11:58:33 by ezonda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	*ft_convert_o(long long octal_int)
 {
 	long long		oct;
 	long long		count;
-	char	*str;
+	char	*str = NULL;
 
 	oct = 0;
 	count = 0;
@@ -65,6 +65,8 @@ char	*ft_convert_o(long long octal_int)
 
 void		ft_indic_o(t_struct *stru, t_stock *stock)
 {
+	if (stru->flag[3] == 1)
+		stru->flag[3] = 0;
 	if (stru->flag[7] == 1)
 	{
 //		ft_putstr(ft_convert_o(stock->stock_ill));
@@ -80,6 +82,6 @@ void		ft_indic_o(t_struct *stru, t_stock *stock)
 		return ;
 	}
 //	ft_putstr(ft_convert_o(stock->stock_i));
-	stock->stock_il = ft_atoi(ft_convert_o(stock->stock_i));
+	stock->stock_i = ft_atoi(ft_convert_o(stock->stock_i));
 	ft_indic_di(stru, stock);
 }

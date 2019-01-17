@@ -6,7 +6,7 @@
 /*   By: ezonda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 10:57:48 by ezonda            #+#    #+#             */
-/*   Updated: 2019/01/16 15:12:17 by ezonda           ###   ########.fr       */
+/*   Updated: 2019/01/17 13:03:31 by ezonda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_stock
 	void		*stock_p;
 }	t_stock;
 
+int		ft_printf(const char *format, ...);
 void	ft_find_indicator(const char *format, t_struct *stru, t_stock *stock);
 void	ft_check_flags(const char *format, t_struct *stru, t_stock *stock);
 void	ft_check_flags_p2(const char *format, t_struct *stru, int i);
@@ -67,9 +68,10 @@ void	ft_apply_flags4(t_struct *stru, t_stock *stock);
 char	*ft_convert_o(long long octal_int);
 char	*ft_convert_hexa(long long hexa);
 void	ft_indic_o(t_struct *stru, t_stock *stock);
-void	ft_indic_h(t_struct *stru, t_stock *stock);
+void	ft_indic_x(t_struct *stru, t_stock *stock);
 void	ft_indic_f(t_struct *stru, t_stock *stock);
 void	ft_putstr_free(char *s);
+void	ft_print_hexa(t_struct *stru, t_stock *stock);
 
 #endif
 

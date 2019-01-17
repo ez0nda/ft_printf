@@ -6,7 +6,7 @@
 /*   By: jebrocho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 13:29:10 by jebrocho          #+#    #+#             */
-/*   Updated: 2019/01/16 12:46:37 by ezonda           ###   ########.fr       */
+/*   Updated: 2019/01/17 10:25:12 by ezonda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	ft_print_dec(long double f, t_struct *stru)
 
 void	ft_print_float(long double f, t_struct *stru)
 {
-	long		nb_dec;
+//	long		nb_dec;
 	long		nb_ent;
 
 	nb_ent = f;

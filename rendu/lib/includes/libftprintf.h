@@ -6,7 +6,7 @@
 /*   By: ezonda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 12:02:16 by ezonda            #+#    #+#             */
-/*   Updated: 2019/01/16 12:57:08 by ezonda           ###   ########.fr       */
+/*   Updated: 2019/01/17 11:14:46 by ezonda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_putnbr(int n);
 void	ft_putstr(const char *str);
 char	*ft_strnew(size_t size);
 char	*ft_strrev(char *s);
-size_t	ft_strlen(const char *str);
+long	ft_strlen(const char *str);
 long	ft_recursive_power(long nb, long pow);
 
 #endif

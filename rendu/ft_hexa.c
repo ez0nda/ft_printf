@@ -6,7 +6,7 @@
 /*   By: jebrocho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 14:58:50 by jebrocho          #+#    #+#             */
-/*   Updated: 2019/01/16 15:08:21 by ezonda           ###   ########.fr       */
+/*   Updated: 2019/01/17 15:55:29 by ezonda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,15 @@ char	*ft_convert_hexa(long long hexa)
 	return (str);
 }
 
-void	ft_indic_h(t_struct *stru, t_stock *stock)
+void	ft_indic_x(t_struct *stru, t_stock *stock)
 {
 	if (stru->flag[8] == 1)
 	{
 		if (stru->indic == 'x')
+		{
+			stock->stock_s = ft_convert_hexa(stock->stock_il);
 			ft_putstr_free(ft_convert_hexa(stock->stock_il));
+		}
 		else
 			ft_putstr_free(ft_toupper_mod(ft_convert_hexa(stock->stock_il)));
 		return ;
@@ -82,7 +85,11 @@ void	ft_indic_h(t_struct *stru, t_stock *stock)
 		return ;
 	}
 	if (stru->indic == 'x')
-		ft_putstr_free(ft_convert_hexa(stock->stock_i));
+	{
+		stock->stock_s = ft_convert_hexa(stock->stock_i);
+		ft_indic_s(stru, stock);
+//		ft_putstr_free(ft_convert_hexa(stock->stock_i));
+	}
 	else
 		ft_putstr_free(ft_toupper_mod(ft_convert_hexa(stock->stock_i)));
 }

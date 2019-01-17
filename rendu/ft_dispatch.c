@@ -6,7 +6,7 @@
 /*   By: ezonda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 13:36:39 by ezonda            #+#    #+#             */
-/*   Updated: 2019/01/16 15:12:18 by ezonda           ###   ########.fr       */
+/*   Updated: 2019/01/17 15:34:12 by ezonda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,9 @@ void	ft_dispatch(t_struct *stru, t_stock *stock)
 	if (stru->indic == 'u')
 		;
 	if (stru->indic == 'x' || stru->indic == 'X')
-		ft_indic_h(stru, stock);
+		ft_indic_x(stru, stock);
 	if (stru->indic == 'f')
 		ft_indic_f(stru, stock);
-	ft_initialize_flags(stru);
 }
 
 void	ft_stock(t_stock *stock, t_struct *stru)
@@ -55,4 +54,36 @@ void	ft_stock(t_stock *stock, t_struct *stru)
 		stock->stock_f = va_arg(stru->ap, double);
 	if (stru->indic == 'p')
 		stock->stock_p = va_arg(stru->ap, void*);
+}
+
+void	ft_initialize_flags(t_struct *stru)
+{
+	int i;
+
+	i = 0;
+	while (i < 10)
+	{
+		stru->flag[i] = 0;
+		i++;
+	}
+}
+
+int		ft_nbrsize(int nb)
+{
+	int		size;
+
+	size = 0;
+	if (nb < 0)
+	{
+		nb *= -1;
+		size++;
+	}
+	if (nb == 0)
+		size++;
+	while (nb > 0)
+	{
+		nb /= 10;
+		size++;
+	}
+	return (size);
 }

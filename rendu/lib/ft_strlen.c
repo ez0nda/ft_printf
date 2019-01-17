@@ -6,13 +6,13 @@
 /*   By: ezonda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 12:53:45 by ezonda            #+#    #+#             */
-/*   Updated: 2019/01/16 12:58:39 by ezonda           ###   ########.fr       */
+/*   Updated: 2019/01/17 11:14:33 by ezonda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libftprintf.h"
 
-size_t	ft_strlen(const char *s)
+long	ft_strlen(const char *s)
 {
 	int i;
 
