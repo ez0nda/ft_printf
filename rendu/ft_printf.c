@@ -6,7 +6,7 @@
 /*   By: ezonda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 09:05:54 by ezonda            #+#    #+#             */
-/*   Updated: 2019/01/17 11:27:36 by ezonda           ###   ########.fr       */
+/*   Updated: 2019/01/19 17:40:09 by jebrocho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,13 @@ int		ft_printf(const char *format, ...)
 
 	va_start(stru.ap, format);
 	i = 0;
+	stru.count_char = 0;
 	while (format[i] != '\0')
 	{
 		if (format[i] == '%')
 		{
-			ft_find_indicator(&format[i], &stru, &stock);
+			i++;
+			ft_find_indicator(&format[i], &stru);
 			ft_check_width(&format[i], &stru);
 			ft_check_precision(&format[i], &stru);
 			ft_check_flags(&format[i], &stru, &stock);
@@ -32,9 +34,16 @@ int		ft_printf(const char *format, ...)
 				i++;
 		}
 		else if (format[i] != '%')
-			write(1, &format[i], 1);
+			ft_putchar(format[i], &stru);
 		i++;
 	}
 	va_end(stru.ap);
-	return (0);
+	return (stru.count_char);
 }
+/*
+int main(int argc, const char *argv[])
+{
+	ft_printf("test : %ld\n", 2147483647);
+	printf("printf : %ld\n", 2147483647);
+	return 0;
+}*/

@@ -6,13 +6,13 @@
 /*   By: ezonda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 09:59:40 by ezonda            #+#    #+#             */
-/*   Updated: 2019/01/17 15:33:25 by ezonda           ###   ########.fr       */
+/*   Updated: 2019/01/19 17:39:25 by jebrocho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_printf.h"
 
-void	ft_find_indicator(const char *format, t_struct *stru, t_stock *stock)
+void	ft_find_indicator(const char *format, t_struct *stru)
 {
 	int		i;
 
@@ -21,10 +21,9 @@ void	ft_find_indicator(const char *format, t_struct *stru, t_stock *stock)
 	while (format[i] != 'd' && format[i] != 'i' && format[i] != 'o' &&
 			format[i] != 'u' && format[i] != 'x' && format[i] != 'X' &&
 			format[i] != 'c' && format[i] != 's' && format[i] != 'p' &&
-			format[i] != 'f')
+			format[i] != 'f' && format[i] != '%')
 		i++;
 	stru->indic = format[i];
-	ft_stock(stock, stru);
 }
 
 void	ft_check_flags(const char *format, t_struct *stru, t_stock *stock)
@@ -35,7 +34,7 @@ void	ft_check_flags(const char *format, t_struct *stru, t_stock *stock)
 	while (format[i] != 'd' && format[i] != 'i' && format[i] != 'o' &&
 			format[i] != 'u' && format[i] != 'x' && format[i] != 'X' &&
 			format[i] != 'c' && format[i] != 's' && format[i] != 'p' &&
-			format[i] != 'f')
+			format[i] != 'f' && format[i] != '%')
 	{
 		if (format[i] == '0' && (format[i - 1] < '0' || format[i - 1] > '9'))
 			stru->flag[0] = 1;
@@ -50,6 +49,7 @@ void	ft_check_flags(const char *format, t_struct *stru, t_stock *stock)
 		ft_check_flags_p2(format, stru, i);
 		i++;
 	}
+	ft_stock(stock, stru);
 	ft_dispatch(stru, stock);
 }
 

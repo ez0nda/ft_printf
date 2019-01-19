@@ -6,11 +6,11 @@
 /*   By: jebrocho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 13:29:10 by jebrocho          #+#    #+#             */
-/*   Updated: 2019/01/14 15:59:32 by jebrocho         ###   ########.fr       */
+/*   Updated: 2019/01/19 17:01:26 by jebrocho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "includes/ft_printf.h"
 
 void	ft_prec(t_struct * stru, long double f)
 {
@@ -22,7 +22,7 @@ void	ft_prec(t_struct * stru, long double f)
 	{
 		f = f * 10;
 		nb = f;
-		ft_putnbr(nb);
+		ft_putnbr(nb, stru);
 		f = f - nb;
 		i++;
 	}
@@ -31,7 +31,7 @@ void	ft_prec(t_struct * stru, long double f)
 	if (nb % 10 >= 5)
 		nb = nb + 10;
 	nb = nb / 10;
-	ft_putnbr(nb);
+	ft_putnbr(nb, stru);
 }
 
 void	ft_print_dec(long double f, t_struct *stru)
@@ -49,19 +49,19 @@ void	ft_print_dec(long double f, t_struct *stru)
 		if (nb % 10 >= 5)
 			nb = nb + 10;
 		nb = nb / 10;
-		ft_putnbr(nb);
+		ft_putnbr(nb, stru);
 	}
 }
 
 void	ft_print_float(long double f, t_struct *stru)
 {
-	long		nb_dec;
+//	long		nb_dec;
 	long		nb_ent;
 
 	nb_ent = f;
 	f = f - nb_ent;
-	ft_putnbr(nb_ent);
-	ft_putchar('.');
+	ft_putnbr(nb_ent, stru);
+	ft_putchar('.', stru);
 	ft_print_dec(f, stru);
 }
 

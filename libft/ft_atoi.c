@@ -6,17 +6,17 @@
 /*   By: ezonda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 16:43:51 by ezonda            #+#    #+#             */
-/*   Updated: 2018/11/16 13:13:57 by ezonda           ###   ########.fr       */
+/*   Updated: 2019/01/15 18:27:02 by ezonda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
-	int i;
-	int n;
-	int neg;
+	long i;
+	long n;
+	long neg;
 
 	i = 0;
 	n = 0;

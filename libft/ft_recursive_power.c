@@ -6,13 +6,13 @@
 /*   By: ezonda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 13:26:27 by ezonda            #+#    #+#             */
-/*   Updated: 2018/11/16 13:28:18 by ezonda           ###   ########.fr       */
+/*   Updated: 2019/01/15 18:17:15 by ezonda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_recursive_power(int nb, int pow)
+long	ft_recursive_power(long nb, long pow)
 {
 	if (pow < 0)
 		return (0);

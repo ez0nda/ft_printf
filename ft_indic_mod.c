@@ -1,27 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_indic_mod.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ezonda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/09 10:05:10 by ezonda            #+#    #+#             */
-/*   Updated: 2019/01/18 14:32:20 by ezonda           ###   ########.fr       */
+/*   Created: 2019/01/19 14:12:44 by ezonda            #+#    #+#             */
+/*   Updated: 2019/01/19 17:04:39 by jebrocho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "includes/ft_printf.h"
 
-void	ft_putstr(const char *s, t_struct *stru)
+void	ft_indic_mod(t_struct *stru)
 {
 	int i;
 
-	i = 0;
-	if (!(s))
-		return ;
-	while (s[i])
+	i = 1;
+	if (stru->flag[2] == 1)
+		ft_putchar('%', stru);
+	if (stru->flag[0] == 1 && stru->flag[2] == 0)
 	{
-		ft_putchar(s[i], stru);
+		while (stru->min_field > i)
+		{
+			ft_putchar('0', stru);
+			stru->min_field--;
+		}
+	}
+	while (stru->min_field > i)
+	{
+		ft_putchar(' ', stru);
 		i++;
 	}
+	if (stru->flag[2] == 0)
+		ft_putchar('%', stru);
 }

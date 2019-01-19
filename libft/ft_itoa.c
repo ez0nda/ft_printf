@@ -6,7 +6,7 @@
 /*   By: ezonda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 15:09:30 by ezonda            #+#    #+#             */
-/*   Updated: 2018/11/17 17:47:06 by ezonda           ###   ########.fr       */
+/*   Updated: 2019/01/15 18:24:26 by ezonda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int		ft_strsize(int n)
 	return (size);
 }
 
-char			*ft_itoa(int n)
+char			*ft_itoa(long n)
 {
 	int		i;
 	long	nb;

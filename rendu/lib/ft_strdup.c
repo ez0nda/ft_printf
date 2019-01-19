@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ezonda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/09 10:05:10 by ezonda            #+#    #+#             */
-/*   Updated: 2019/01/18 14:32:20 by ezonda           ###   ########.fr       */
+/*   Created: 2018/11/07 13:04:12 by ezonda            #+#    #+#             */
+/*   Updated: 2019/01/18 16:39:38 by ezonda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	ft_putstr(const char *s, t_struct *stru)
+char	*ft_strdup(const char *s)
 {
-	int i;
+	int		i;
+	int		n;
+	char	*dest;
 
 	i = 0;
-	if (!(s))
-		return ;
-	while (s[i])
+	n = 0;
+	while (s[n])
+		n++;
+	if (!(dest = (char*)malloc(sizeof(char) * (n + 1))))
+		return (NULL);
+	while (i < n)
 	{
-		ft_putchar(s[i], stru);
+		dest[i] = s[i];
 		i++;
 	}
+	dest[i] = '\0';
+	return (dest);
 }

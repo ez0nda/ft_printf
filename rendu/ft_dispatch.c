@@ -6,7 +6,7 @@
 /*   By: ezonda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 13:36:39 by ezonda            #+#    #+#             */
-/*   Updated: 2019/01/17 15:34:12 by ezonda           ###   ########.fr       */
+/*   Updated: 2019/01/19 17:37:46 by jebrocho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,22 +25,26 @@ void	ft_dispatch(t_struct *stru, t_stock *stock)
 	if (stru->indic == 'o')
 		ft_indic_o(stru, stock);
 	if (stru->indic == 'u')
-		;
+		ft_indic_u(stru, stock);
 	if (stru->indic == 'x' || stru->indic == 'X')
 		ft_indic_x(stru, stock);
 	if (stru->indic == 'f')
 		ft_indic_f(stru, stock);
+	if (stru->indic == '%')
+		ft_indic_mod(stru);
+//	ft_initialize_flags(stru);
 }
 
 void	ft_stock(t_stock *stock, t_struct *stru)
 {
-	if ((stru->indic == 'd' || stru->indic == 'i' || stru->indic == 'o'
-			|| stru->indic == 'u' || stru->indic == 'x' || stru->indic == 'X')
+	if ((stru->indic == 'd' || stru->indic == 'i')
 			&& stru->flag[7] == 0 && stru->flag[8] == 0)
-		stock->stock_i = (int)va_arg(stru->ap, int);
-	else if ((stru->indic == 'd' || stru->indic == 'i' || stru->indic == 'o'
+		stock->stock_i = va_arg(stru->ap, int);
+	else if (((stru->indic == 'd' || stru->indic == 'i' || stru->indic == 'o'
 				|| stru->indic == 'u' || stru->indic == 'x'
 				|| stru->indic == 'X') && stru->flag[8] == 1)
+			|| stru->indic == 'o' || stru->indic == 'u' || stru->indic == 'x'
+			|| stru->indic == 'X')
 		stock->stock_il = va_arg(stru->ap, long);
 	else if ((stru->indic == 'd' || stru->indic == 'i' || stru->indic == 'o'
 				|| stru->indic == 'u' || stru->indic == 'x'
@@ -68,7 +72,7 @@ void	ft_initialize_flags(t_struct *stru)
 	}
 }
 
-int		ft_nbrsize(int nb)
+int		ft_nbrsize(long nb)
 {
 	int		size;
 

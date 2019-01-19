@@ -6,76 +6,40 @@
 /*   By: jebrocho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 14:33:05 by jebrocho          #+#    #+#             */
-/*   Updated: 2019/01/15 17:30:49 by ezonda           ###   ########.fr       */
+/*   Updated: 2019/01/19 17:18:11 by jebrocho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "includes/ft_printf.h"
 
-char		*ft_form_o(long long oct, long long count, char *str)
+char		*ft_convert_o(long long octal_int)
 {
-	if (count >= 10 && oct < 10)
-	{
-		oct = oct * count;
-		str = ft_itoa(oct);
-		return (str);
-	}
-	if (ft_nbrsize(count) > ft_nbrsize(oct))
-	{
-		str = ft_itoa(oct);
-		str = ft_strrev(str);
-		oct = ft_atoi(str);
-		oct = oct * ft_recursive_power(10, ft_nbrsize(count) - ft_nbrsize(oct));
-		str = ft_itoa(oct);
-		return (str);
-	}
-	return (NULL);
-}
+	int			i;
+	char		*str;
 
-char	*ft_convert_o(long long octal_int)
-{
-	long long		oct;
-	long long		count;
-	char	*str;
-
-	oct = 0;
-	count = 0;
+	i = 0;
+	if (!(str = (char*)malloc(sizeof(char) * 22)))
+		return (NULL);
 	while (octal_int != 0)
 	{
-		oct = (oct + octal_int % 8) * 10;
+		str[i] = octal_int % 8 + 48;
 		octal_int /= 8;
-		if (count != 0)
-			count = count * 10;
-		else
-			count++;
+		i++;
 	}
-	oct = oct / 10;
-	if ((str = ft_form_o(oct, count, str)) != NULL)
-		return (str);
-	str = ft_itoa(oct);
+	str[i] = '\0';
 	str = ft_strrev(str);
-//	printf("\natoi = %d\n", ft_atoi(str));
 	return (str);
 }
 
-
 void		ft_indic_o(t_struct *stru, t_stock *stock)
 {
-	if (stru->flag[7] == 1)
-	{
-//		ft_putstr(ft_convert_o(stock->stock_ill));
-		stock->stock_i = ft_atoi(ft_convert_o(stock->stock_ill));
-		ft_indic_di(stru, stock);
+	if (stru->flag[3] == 1)
+		stru->flag[3] = 0;
+	if (stock->stock_il > 2147483647 && stru->flag[7] == 0 && stru->flag[8] == 0)
+		stock->stock_il = stock->stock_il - (9223372036854775807 - 4294967295);
+	if ((stock->stock_s = ft_convert_o(stock->stock_il)) == NULL)
 		return ;
-	}
-	if (stru->flag[8] == 1)
-	{
-//		ft_putstr(ft_convert_o(stock->stock_il));
-		stock->stock_i = ft_atoi(ft_convert_o(stock->stock_il));
-		ft_indic_di(stru, stock);
-		return ;
-	}
-//	ft_putstr(ft_convert_o(stock->stock_i));
-	stock->stock_i = ft_atoi(ft_convert_o(stock->stock_i));
+	stock->stock_il = ft_atoi(stock->stock_s);
+	free(stock->stock_s);
 	ft_indic_di(stru, stock);
 }
