@@ -87,6 +87,7 @@ char	*ft_strrev(char *s);
 long	ft_strlen(const char *str);
 long	ft_recursive_power(long nb, long pow);
 char	*ft_strdup(const char *s);
+char	*ft_strsub(const char *s, unsigned int start, size_t len);
 
 #endif
 

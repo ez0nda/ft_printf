@@ -9,7 +9,7 @@ int		main(void)
 //	printf("\nprintf \n%p", &ptr);
 //	ft_printf("%-20.10x", 4222);
 //	printf("\nprintf \n%-20.10x", 4222);
-//	ft_printf("%10.7s", "test");
-//	printf("\nprintf \n%10.7s", "test");
+	ft_printf("%-1.2s is a test", "this");
+	printf("\nprintf \n%-1.2s is a test\n", "this");
 	return (0);
 }

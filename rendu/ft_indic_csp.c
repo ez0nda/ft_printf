@@ -38,6 +38,8 @@ void	ft_indic_c(t_struct *stru, t_stock *stock)
 
 void	ft_indic_s(t_struct *stru, t_stock *stock)
 {
+	if (stru->indic == 's' && stru->prec < ft_strlen(stock->stock_s))
+		stock->stock_s = ft_strsub(stock->stock_s, 0, stru->prec);
 	if (stru->flag[2] == 1 && stru->indic == 's')
 		ft_putstr(stock->stock_s, stru);
 	if (stru->flag[0] == 1 && stru->flag[2] == 0)
