@@ -6,7 +6,7 @@
 /*   By: ezonda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 10:25:08 by ezonda            #+#    #+#             */
-/*   Updated: 2019/01/19 15:16:46 by ezonda           ###   ########.fr       */
+/*   Updated: 2019/01/19 18:00:15 by jebrocho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@ void	ft_putnbr(long n, t_struct *stru)
 	long nb;
 
 	nb = n;
+	if (stru->modl == 0)
+	{
+		ft_putstr("-9223372036854775808", stru);
+		return ;
+	}
 	if (nb < 0)
 	{
 		ft_putchar('-', stru);

@@ -6,7 +6,7 @@
 /*   By: ezonda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 09:05:54 by ezonda            #+#    #+#             */
-/*   Updated: 2019/01/19 17:40:09 by jebrocho         ###   ########.fr       */
+/*   Updated: 2019/01/21 17:46:43 by ezonda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,15 @@ int		ft_printf(const char *format, ...)
 	va_end(stru.ap);
 	return (stru.count_char);
 }
+
 /*
 int main(int argc, const char *argv[])
 {
-	ft_printf("test : %ld\n", 2147483647);
-	printf("printf : %ld\n", 2147483647);
+	ft_printf("@moulitest: %.x %5.0x\n", 0, 0);
+	printf("@moulitest: %.x %5.0x\n", 0, 0);
+//	ft_printf("@moulitest:%5.x\n", 0);
+//	printf("@moulitest:%5.x\n", 0);
+//	ft_printf("@moulitest: %5.0x\n", 0);
+//	printf("@moulitest: %5.0x\n", 0);
 	return 0;
 }*/

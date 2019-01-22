@@ -6,7 +6,7 @@
 /*   By: ezonda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 09:59:40 by ezonda            #+#    #+#             */
-/*   Updated: 2019/01/19 17:39:25 by jebrocho         ###   ########.fr       */
+/*   Updated: 2019/01/21 17:34:43 by ezonda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_find_indicator(const char *format, t_struct *stru)
 	while (format[i] != 'd' && format[i] != 'i' && format[i] != 'o' &&
 			format[i] != 'u' && format[i] != 'x' && format[i] != 'X' &&
 			format[i] != 'c' && format[i] != 's' && format[i] != 'p' &&
-			format[i] != 'f' && format[i] != '%')
+			format[i] != 'f' && format[i] != '%' && format[i] != 'U')
 		i++;
 	stru->indic = format[i];
 }
@@ -34,9 +34,9 @@ void	ft_check_flags(const char *format, t_struct *stru, t_stock *stock)
 	while (format[i] != 'd' && format[i] != 'i' && format[i] != 'o' &&
 			format[i] != 'u' && format[i] != 'x' && format[i] != 'X' &&
 			format[i] != 'c' && format[i] != 's' && format[i] != 'p' &&
-			format[i] != 'f' && format[i] != '%')
+			format[i] != 'f' && format[i] != '%' && format[i] != 'U')
 	{
-		if (format[i] == '0' && (format[i - 1] < '0' || format[i - 1] > '9'))
+		if (format[i] == '0' && (format[i - 1] < '0' || format[i - 1] > '9') && format[i - 1] != '.')
 			stru->flag[0] = 1;
 		if (format[i] == '#')
 			stru->flag[1] = 1;
@@ -102,8 +102,9 @@ void	ft_check_precision(const char *format, t_struct *stru)
 	stru->prec = 0;
 	while (format[i] != '\0' && format[i] != stru->indic)
 	{
-		if (format[i] == '.' && ft_isdigit(format[i + 1]))
+		if (format[i] == '.')
 		{
+			stru->flag[10] = 1;
 			while (ft_isdigit(format[++i]))
 				pre[j++] = format[i];
 		}

@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ezonda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/08 13:37:57 by ezonda            #+#    #+#             */
-/*   Updated: 2019/01/21 10:49:10 by ezonda           ###   ########.fr       */
+/*   Created: 2018/11/07 17:56:09 by ezonda            #+#    #+#             */
+/*   Updated: 2019/01/19 18:11:32 by jebrocho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-char	*ft_strsub(char const *s, unsigned int start, size_t len)
+int		ft_strcmp(const char *s1, const char *s2)
 {
-	char			*sub;
-	unsigned int	i;
+	unsigned int i;
 
-	sub = NULL;
 	i = 0;
-	if (!(s))
-		return (NULL);
-	if (!(sub = (char*)malloc(sizeof(char) * (len + 1))))
-		return (NULL);
-	while (i < len)
-	{
-		sub[i] = s[start];
+	while ((s1[i]) && (s2[i]) && (s1[i] == s2[i]))
 		i++;
-		start++;
-	}
-	sub[i] = '\0';
-	return (sub);
+	i = (unsigned char)s1[i] - (unsigned char)s2[i];
+	return (i);
 }

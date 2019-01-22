@@ -6,7 +6,7 @@
 /*   By: ezonda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 10:57:48 by ezonda            #+#    #+#             */
-/*   Updated: 2019/01/19 17:39:23 by jebrocho         ###   ########.fr       */
+/*   Updated: 2019/01/21 17:33:51 by ezonda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 typedef struct s_struct
 {
 	va_list		ap;
+	int			modl;
 	char		indic;
 	int			min_field;
 	int			prec;
@@ -30,7 +31,7 @@ typedef struct s_struct
 	int			valid;
 	int			stock_pre;
 	int			stock_pad;
-	int			flag[10]; // 0 / # / - / + /' '/ hh / h / ll / l / L //
+	int			flag[11]; // 0 / # / - / + /' '/ hh / h / ll / l / L / . /
 }	t_struct;
 
 typedef struct s_stock
@@ -69,7 +70,7 @@ void	ft_apply_flags2(t_struct *stru, t_stock *stock, int i);
 void	ft_apply_flags3(t_struct *stru, t_stock *stock, int i);
 void	ft_apply_flags4(t_struct *stru, t_stock *stock);
 char	*ft_convert_o(long long octal_int);
-char	*ft_convert_hexa(long long hexa);
+char	*ft_convert_hexa(long long hexa, int j);
 void	ft_indic_o(t_struct *stru, t_stock *stock);
 void	ft_indic_x(t_struct *stru, t_stock *stock);
 void	ft_indic_f(t_struct *stru, t_stock *stock);
@@ -87,6 +88,7 @@ char	*ft_strrev(char *s);
 long	ft_strlen(const char *str);
 long	ft_recursive_power(long nb, long pow);
 char	*ft_strdup(const char *s);
+int		ft_strcmp(const char *s1, const char *s2);
 char	*ft_strsub(const char *s, unsigned int start, size_t len);
 
 #endif
