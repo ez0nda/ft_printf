@@ -36,10 +36,10 @@ void	ft_prec(t_struct * stru, long double f)
 
 void	ft_print_dec(long double f, t_struct *stru)
 {
-	int		i;
+//	int		i;
 	int		nb;
 
-	i = 0;
+//	i = 0;
 	if (stru->prec > 0)
 		ft_prec(stru, f);
 	else

@@ -100,17 +100,23 @@ void	ft_check_precision(const char *format, t_struct *stru)
 	j = 0;
 	pre = ft_strnew(0);
 	stru->prec = 0;
-	while (format[i] != '\0' && format[i] != stru->indic)
+	while (format[i] != '\0'/* && format[i] != stru->indic*/)
 	{
 		if (format[i] == '.')
 		{
 			stru->flag[10] = 1;
 			while (ft_isdigit(format[++i]))
 				pre[j++] = format[i];
+			if (format[i] == stru->indic)
+				break ;
+//			printf("\nformat : %c\n", format[i]);
 		}
 		i++;
 		pre[j] = '\0';
+		if (format[i] == stru->indic)
+			break ;
 	}
 	stru->prec = ft_atoi(pre);
+//	printf("\nprec : %d\n", stru->prec);
 	free(pre);
 }
