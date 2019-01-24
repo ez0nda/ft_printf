@@ -6,13 +6,13 @@
 /*   By: ezonda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 16:43:51 by ezonda            #+#    #+#             */
-/*   Updated: 2019/01/18 14:32:49 by ezonda           ###   ########.fr       */
+/*   Updated: 2019/01/24 01:58:41 by jebrocho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-long	ft_atoi(const char *str)
+long		ft_atoi(const char *str)
 {
 	long i;
 	long n;

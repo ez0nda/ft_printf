@@ -6,7 +6,7 @@
 /*   By: ezonda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 09:59:40 by ezonda            #+#    #+#             */
-/*   Updated: 2019/01/21 17:34:43 by ezonda           ###   ########.fr       */
+/*   Updated: 2019/01/24 08:03:35 by jebrocho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	ft_find_indicator(const char *format, t_struct *stru)
 	int		i;
 
 	i = 0;
+//	printf("\ncheck : %d\n", ft_check_format(format, stru));
 	ft_initialize_flags(stru);
 	while (format[i] != 'd' && format[i] != 'i' && format[i] != 'o' &&
 			format[i] != 'u' && format[i] != 'x' && format[i] != 'X' &&
@@ -24,6 +25,9 @@ void	ft_find_indicator(const char *format, t_struct *stru)
 			format[i] != 'f' && format[i] != '%' && format[i] != 'U')
 		i++;
 	stru->indic = format[i];
+//	if (ft_check_format(format, stru) == 0)
+//		exit (0);
+
 }
 
 void	ft_check_flags(const char *format, t_struct *stru, t_stock *stock)
@@ -100,16 +104,14 @@ void	ft_check_precision(const char *format, t_struct *stru)
 	j = 0;
 	pre = ft_strnew(0);
 	stru->prec = 0;
-	while (format[i] != '\0'/* && format[i] != stru->indic*/)
+	while (format[i] != '\0')
 	{
 		if (format[i] == '.')
 		{
 			stru->flag[10] = 1;
 			while (ft_isdigit(format[++i]))
 				pre[j++] = format[i];
-			if (format[i] == stru->indic)
-				break ;
-//			printf("\nformat : %c\n", format[i]);
+			i--;
 		}
 		i++;
 		pre[j] = '\0';
@@ -117,6 +119,5 @@ void	ft_check_precision(const char *format, t_struct *stru)
 			break ;
 	}
 	stru->prec = ft_atoi(pre);
-//	printf("\nprec : %d\n", stru->prec);
 	free(pre);
 }

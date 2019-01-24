@@ -6,7 +6,7 @@
 /*   By: ezonda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 13:39:35 by ezonda            #+#    #+#             */
-/*   Updated: 2019/01/19 18:23:32 by jebrocho         ###   ########.fr       */
+/*   Updated: 2019/01/24 04:00:42 by jebrocho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,11 @@ void	ft_indic_di(t_struct *stru, t_stock *stock)
 {
 	int i;
 
-	if (stru->flag[7] == 0 && stru->flag[8] == 0 && (stru->indic == 'i'
+	if (stru->flag[5] == 1 && (stru->indic == 'i' || stru->indic == 'd'))
+		stock->stock_il = (char)stock->stock_i;
+	else if (stru->flag[6] == 1 && (stru->indic == 'i' || stru->indic == 'd'))
+		stock->stock_il = (short int)stock->stock_i;
+	else if (stru->flag[7] == 0 && stru->flag[8] == 0 && (stru->indic == 'i'
 				|| stru->indic == 'd'))
 		stock->stock_il = (int)stock->stock_i;
 	i = ft_nbrsize(stock->stock_il);
@@ -51,12 +55,12 @@ void	ft_apply_flags3(t_struct *stru, t_stock *stock, int i)
 			ft_putchar('0', stru);
 			stru->prec--;
 		}
-		while (stru->prec > i && stock->stock_il < 0)
+		while (stru->prec >= i && stock->stock_il < 0)
 		{
 			ft_putchar('0', stru);
 			stru->prec--;
 		}
-		if (stru->stock_pre > stru->min_field && stock->stock_il < 0)
+		if (stru->stock_pre > stru->min_field && stru->min_field != 0 && stock->stock_il < 0)
 			ft_putchar('0', stru);
 		while (stru->min_field > i && stru->min_field > stru->stock_pre
 				&& stru->flag[0] == 0)
@@ -86,17 +90,39 @@ void	ft_apply_flags4(t_struct *stru, t_stock *stock)
 			&& stru->flag[0] == 1)
 		ft_putchar('0', stru);
 	if (stru->flag[2] == 1 && stru->prec != 0)
-		ft_putnbr(stock->stock_il >= 0 ? stock->stock_il : stock->stock_il * -1, stru);
+	{
+		if ((stru->flag[8] != 1 && stru->flag[7] != 1) || stru->indic == 'd' || stru->indic == 'i')
+			ft_putnbr(stock->stock_il >= 0 ? stock->stock_il
+					: stock->stock_il * -1, stru);
+		else if ((stru->flag[8] == 1 || stru->flag[7] == 1) && stru->indic == 'o')
+			ft_putstr(stock->stock_s, stru);
+		else
+			ft_putnbr_l(stock->stock_il, stru);
+	}
 	if (stru->flag[2] == 0 && ((stru->flag[10] == 1 && (stru->prec != 0 || stock->stock_il != 0)) || (stru->flag[10] == 0)))
 	{
 		if (stru->flag[3] == 1 && stock->stock_il >= 0 && stru->flag[0] == 0
 				&& stru->prec == 0)
 			ft_putchar('+', stru);
 		if (stru->prec != 0 || stru->flag[0] == 1)
-			ft_putnbr(stock->stock_il >= 0 ?
+		{
+			if ((stru->flag[8] != 1 && stru->flag[7] != 1) || stru->indic == 'd' || stru->indic == 'i')
+				ft_putnbr(stock->stock_il >= 0 ?
 					stock->stock_il : stock->stock_il * -1, stru);
+			else if ((stru->flag[8] == 1 || stru->flag[7] == 1) && stru->indic == 'o')
+				ft_putstr(stock->stock_s, stru);
+			else
+				ft_putnbr_l(stock->stock_il, stru);
+		}
 		else
-			ft_putnbr(stock->stock_il, stru);
+		{
+			if ((stru->flag[8] != 1 && stru->flag[7] != 1) || stru->indic == 'd' || stru->indic == 'i')
+				ft_putnbr(stock->stock_il, stru);
+			else if ((stru->flag[8] == 1 || stru->flag[7] == 1) && stru->indic == 'o')
+				ft_putstr(stock->stock_s, stru);
+			else
+				ft_putnbr_l(stock->stock_il, stru);
+		}
 	}
 	else if (stru->flag[2] == 0 && stru->flag[10] == 1 && (stru->prec != 0 || stock->stock_il != 0) && stru->stock_pad > 0)
 		ft_putchar(' ', stru);
@@ -145,7 +171,14 @@ void	ft_apply_flags2(t_struct *stru, t_stock *stock, int i)
 		if (stru->flag[10] == 1 && stru->prec == 0 && stock->stock_il == 0)
 			ft_putchar(' ', stru);
 		else
-			ft_putnbr(stock->stock_il >= 0 ? stock->stock_il : stock->stock_il * -1, stru);
+		{
+			if ((stru->flag[8] != 1 && stru->flag[7] != 1) || stru->indic == 'd' || stru->indic == 'i')
+				ft_putnbr(stock->stock_il >= 0 ? stock->stock_il : stock->stock_il * -1, stru);
+			else if ((stru->flag[8] == 1 || stru->flag[7] == 1) && stru->indic == 'o')
+				ft_putstr(stock->stock_s, stru);
+			else
+				ft_putnbr_l(stock->stock_il, stru);
+		}
 		if (stru->flag[0] == 1)
 			stru->flag[0] = 0;
 	}
@@ -155,8 +188,6 @@ void	ft_apply_flags2(t_struct *stru, t_stock *stock, int i)
 		ft_putchar(' ', stru);
 		i--;
 	}
-//	if (stock->stock_il < 0 && stru->prec != 0 && stru->prec > stru->min_field)
-//		ft_putchar('5', stru);
 	while (stru->flag[0] == 1 && i > 0)
 	{
 		ft_putchar('0', stru);

@@ -6,27 +6,21 @@
 #    By: ezonda <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/16 11:36:59 by ezonda            #+#    #+#              #
-#    Updated: 2019/01/21 10:48:51 by ezonda           ###   ########.fr        #
+#    Updated: 2019/01/23 16:01:42 by jebrocho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
 SRC = ft_printf.c ft_dispatch.c ft_float.c ft_hexa.c ft_indic_csp.c ft_octal.c \
-	ft_parser.c ft_print_numbers.c ft_unsigned.c ft_indic_mod.c
+	ft_parser.c ft_print_numbers.c ft_unsigned.c ft_indic_mod.c ft_flag_u.c
 
 LIB_SRC = lib/ft_atoi.c lib/ft_isdigit.c lib/ft_itoa.c lib/ft_putchar.c \
 	lib/ft_putnbr.c lib/ft_putstr.c lib/ft_strnew.c lib/ft_strrev.c \
 	lib/ft_recursive_power.c lib/ft_strlen.c lib/ft_strdup.c lib/ft_strcmp.c \
 	lib/ft_strsub.c
 
-#OBJ = $(SRC: .c=.o)
-
-#LIB_OBJ = $(LIB_SRC .c=.o)
-
-OBJ = ft_printf.o ft_dispatch.o ft_float.o ft_hexa.o ft_indic_csp.o ft_octal.o \
-	ft_parser.o ft_print_numbers.o ft_unsigned.o ft_indic_mod.o
-
+OBJ = $(SRC:.c=.o)
 
 LIB_OBJ = ft_atoi.o ft_isdigit.o ft_itoa.o ft_putchar.o ft_putnbr.o ft_putstr.o\
 	ft_strnew.o ft_strrev.o ft_recursive_power.o ft_strlen.o ft_strdup.o \
@@ -55,10 +49,10 @@ clean:
 	@echo "Suppression des fichiers objets"
 
 fclean:
-#	@rm -f $(OBJ)
-#	@rm -f $(LIB_OBJ)supprime les .c
-	@rm -f $(NAME)
-	@echo "Suppression des fichiers objets (pas vraiment...)"
+	@rm -rf $(OBJ)
+	@rm -rf $(LIB_OBJ)
+	@rm -rf $(NAME)
+	@echo "Suppression des fichiers objets"
 	@echo "Suppression de $(NAME)"
 
 re: fclean all
