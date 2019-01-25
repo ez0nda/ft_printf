@@ -6,7 +6,7 @@
 /*   By: jebrocho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 14:33:05 by jebrocho          #+#    #+#             */
-/*   Updated: 2019/01/24 01:59:17 by jebrocho         ###   ########.fr       */
+/*   Updated: 2019/01/25 19:38:49 by ezonda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ char		*ft_convert_o(uintmax_t octal_int)
 	i = 0;
 	if (!(str = (char*)malloc(sizeof(char) * 23)))
 		return (NULL);
+	if (octal_int == 0)
+		return (ft_strdup("0"));
 	while (octal_int != 0)
 	{
 		str[i] = octal_int % 8 + 48;
@@ -31,7 +33,7 @@ char		*ft_convert_o(uintmax_t octal_int)
 	return (str);
 }
 
-void		ft_izi(t_struct *stru, int i)
+void		ft_minus_flag(t_struct *stru, int i)
 {
 	if (stru->flag[0] == 0)
 		while (stru->min_field-- > i)
@@ -41,7 +43,22 @@ void		ft_izi(t_struct *stru, int i)
 			ft_putchar('0', stru);
 }
 
-void		ft_has_flag(t_struct *stru, t_stock *stock)
+void		ft_hash_flag2(t_struct *stru, t_stock *stock, int i)
+{
+	ft_minus_flag(stru, i);
+	while (stru->prec-- > i)
+		ft_putchar('0', stru);
+	ft_putchar('0', stru);
+	if (stock->stock_il != 0)
+	{
+		if (stru->flag[7] == 0 && stru->flag[8] == 0)
+			ft_putnbr(stock->stock_il, stru);
+		else
+			ft_putstr(stock->stock_s, stru);
+	}
+}
+
+void		ft_hash_flag(t_struct *stru, t_stock *stock)
 {
 	int i;
 
@@ -59,18 +76,10 @@ void		ft_has_flag(t_struct *stru, t_stock *stock)
 			else
 				ft_putstr(stock->stock_s, stru);
 		}
-		ft_izi(stru, i);
+		ft_minus_flag(stru, i);
 		return ;
 	}
-	ft_izi(stru, i);
-	ft_putchar('0', stru);
-	if (stock->stock_il != 0)
-	{
-		if (stru->flag[7] == 0 && stru->flag[8] == 0)
-			ft_putnbr(stock->stock_il, stru);
-		else
-			ft_putstr(stock->stock_s, stru);
-	}
+	ft_hash_flag2(stru, stock, i);
 }
 
 void		ft_indic_o(t_struct *stru, t_stock *stock)
@@ -83,7 +92,8 @@ void		ft_indic_o(t_struct *stru, t_stock *stock)
 		stock->stock_h = 65536;
 	else
 		stock->stock_h = 4294967296;
-	if (stock->stock_il >= stock->stock_h && stru->flag[7] == 0 && stru->flag[8] == 0)
+	if (stock->stock_il >= stock->stock_h && stru->flag[7] == 0
+			&& stru->flag[8] == 0)
 		stock->stock_il = stock->stock_il % stock->stock_h;
 	if ((stock->stock_s = ft_convert_o(stock->stock_il)) == NULL)
 		return ;
@@ -92,6 +102,6 @@ void		ft_indic_o(t_struct *stru, t_stock *stock)
 	if (stru->flag[1] == 0)
 		ft_indic_di(stru, stock);
 	else
-		ft_has_flag(stru, stock);
+		ft_hash_flag(stru, stock);
 	free(stock->stock_s);
 }

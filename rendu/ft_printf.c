@@ -6,7 +6,7 @@
 /*   By: ezonda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 09:05:54 by ezonda            #+#    #+#             */
-/*   Updated: 2019/01/24 07:09:42 by jebrocho         ###   ########.fr       */
+/*   Updated: 2019/01/25 17:33:36 by ezonda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,26 @@ int		ft_printf(const char *format, ...)
 {
 	t_struct	stru;
 	t_stock		stock;
-	int			i;
 
 	va_start(stru.ap, format);
-	i = 0;
+	stru.index = 0;
 	stru.count_char = 0;
-	while (format[i] != '\0')
+	while (format[stru.index] != '\0')
 	{
-		if (format[i] == '%')
+		if (format[stru.index] == '%')
 		{
-			i++;
-			ft_find_indicator(&format[i], &stru);
-			ft_check_width(&format[i], &stru);
-			ft_check_precision(&format[i], &stru);
-			ft_check_flags(&format[i], &stru, &stock);
-			while (format[i] != stru.indic)
-				i++;
+			stru.index++;
+			if (ft_find_indicator(&format[stru.index], &stru) == 0)
+				return (stru.count_char);
+			ft_check_width(&format[stru.index], &stru);
+			ft_check_precision(&format[stru.index], &stru);
+			ft_check_flags(&format[stru.index], &stru, &stock);
+			while (format[stru.index] != stru.indic)
+				stru.index++;
 		}
-		else if (format[i] != '%')
-			ft_putchar(format[i], &stru);
-		i++;
+		else if (format[stru.index] != '%')
+			ft_putchar(format[stru.index], &stru);
+		stru.index++;
 	}
 	va_end(stru.ap);
 	return (stru.count_char);

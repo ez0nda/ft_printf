@@ -6,32 +6,43 @@
 /*   By: ezonda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 13:36:39 by ezonda            #+#    #+#             */
-/*   Updated: 2019/01/24 08:02:07 by jebrocho         ###   ########.fr       */
+/*   Updated: 2019/01/25 22:40:47 by ezonda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_printf.h"
-/*
+
+void	ft_invalid(const char *format, t_struct *stru)
+{
+	int i;
+
+	i = 0;
+	while (format[i] == ' ')
+		i++;
+	ft_putstr(&format[i], stru);
+}
+
 int		ft_check_format(const char *format, t_struct *stru)
 {
 	int i;
 
 	i = 0;
-	printf("\nindic : %c\n", stru->indic);
-	while (format[i] != stru->indic)
-	{
-		printf("\nformat : %c\n", format[i]);
-		if (format[i] == '%' || format[i] == ' ')
-			i++;
-		else if (ft_isdigit(format[i]) == 1 && (ft_isdigit(format[i + 1]) == 1 || format[i + 1] == '.' || format[i - 1] == '.'))
-			i++;
-		else if (format[i] == '.' && ((ft_isdigit(format[i - 1]) == 1) || ft_isdigit(format[i + 1] == 1)))
-			i++;
-	}
-	if (format[i] == stru->indic)
+	stru->valid = 0;
+	while (format[i] == '0' || format[i] == '#' || format[i] == '+'
+			|| format[i] == '-' || format[i] == ' ' || format[i] == '.'
+			|| format[i] == 'h' || format[i] == 'l' || format[i] == 'L'
+			|| format[i] == 'j' || format[i] == 'z' || ft_isdigit(format[i]))
+		i++;
+	while (format[stru->valid] != stru->indic)
+		stru->valid++;
+	if (i == stru->valid)
 		return (1);
-	return (0);
-}*/
+	else
+	{
+		ft_invalid(format, stru);
+		return (0);
+	}
+}
 
 void	ft_dispatch(t_struct *stru, t_stock *stock)
 {
@@ -89,29 +100,10 @@ void	ft_initialize_flags(t_struct *stru)
 	int i;
 
 	i = 0;
+	stru->stock_pre2 = 0;
 	while (i <= 10)
 	{
 		stru->flag[i] = 0;
 		i++;
 	}
-}
-
-int		ft_nbrsize(long nb)
-{
-	int		size;
-
-	size = 0;
-	if (nb < 0)
-	{
-		nb *= -1;
-		size++;
-	}
-	if (nb == 0)
-		size++;
-	while (nb > 0)
-	{
-		nb /= 10;
-		size++;
-	}
-	return (size);
 }

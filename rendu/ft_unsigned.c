@@ -6,7 +6,7 @@
 /*   By: jebrocho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 13:55:40 by jebrocho          #+#    #+#             */
-/*   Updated: 2019/01/24 01:02:51 by jebrocho         ###   ########.fr       */
+/*   Updated: 2019/01/25 21:07:48 by ezonda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ intmax_t	ft_find_u(t_stock *stock, int i)
 		return (stock->stock_il);
 }
 
-void	ft_indic_u(t_struct *stru, t_stock *stock)
+void		ft_indic_u(t_struct *stru, t_stock *stock)
 {
 	stru->flag[3] = 0;
 	stru->flag[4] = 0;

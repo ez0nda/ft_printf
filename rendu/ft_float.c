@@ -6,20 +6,13 @@
 /*   By: jebrocho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 13:29:10 by jebrocho          #+#    #+#             */
-/*   Updated: 2019/01/24 06:00:59 by jebrocho         ###   ########.fr       */
+/*   Updated: 2019/01/25 21:52:11 by ezonda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_printf.h"
 
-double	ft_abs(double f)
-{
-	if (f < 0)
-		return (-f);
-	return (f);
-}
-
-void	ft_prec(t_struct * stru, long double f)
+void	ft_prec(t_struct *stru, long double f)
 {
 	int i;
 	int nb;
@@ -54,11 +47,8 @@ void	ft_print_dec(long double f, t_struct *stru)
 		while (i < 6)
 		{
 			f *= 10;
-//			printf("\n2:%Lf\n", f);
 			nb = (int)f;
 			f = f - nb;
-//			printf("\n3:%Lf\n", f);
-//			printf("\nnb : %d\n", nb);
 			i++;
 			if (i != 6)
 				ft_putnbr(nb, stru);
@@ -90,7 +80,6 @@ size_t	ft_fnbrsize(double f, t_struct *stru)
 	}
 	else if (stru->flag[10] == 0)
 		i += 6;
-	printf("\ni:%ld\n", i);
 	return (i);
 }
 

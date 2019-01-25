@@ -6,7 +6,7 @@
 /*   By: jebrocho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/23 11:16:06 by jebrocho          #+#    #+#             */
-/*   Updated: 2019/01/23 18:50:45 by jebrocho         ###   ########.fr       */
+/*   Updated: 2019/01/25 19:24:48 by ezonda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,7 @@ void		ft_print_has_hexa(t_struct *stru, t_stock *stock)
 	while (stru->min_field-- > i)
 		ft_putchar(' ', stru);
 	ft_add(stru);
+	while (stru->prec-- > ft_strlen(stock->stock_s))
+		ft_putchar('0', stru);
 	ft_putstr_free(stock->stock_s, stru);
 }
